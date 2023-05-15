@@ -1,0 +1,15 @@
+# For Xavier-NX
+FROM nvcr.io/nvidia/l4t-ml:r35.2.1-py3 AS baseline
+
+SHELL ["/bin/bash", "-c"]
+
+#
+# python pip packages
+#
+
+FROM baseline
+
+RUN pip3 install --upgrade pip 
+RUN pip install -q git+https://github.com/huggingface/transformers.git
+RUN pip install -q datasets sentencepiece protobuf==3.20.3
+
